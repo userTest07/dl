@@ -1,0 +1,95 @@
+Title: House Price Prediction using Deep Neural Network (Regression)
+
+Theory:
+A Deep Neural Network (DNN) is a supervised machine learning model inspired by the human brain. It consists of multiple layers of neurons — input, hidden, and output — where each neuron applies a weighted sum followed by an activation function. For regression tasks like house price prediction, the network learns to map input features to a continuous output value by minimizing a loss function (MSE) through backpropagation and gradient descent.
+The Boston Housing dataset contains 13 features such as crime rate, number of rooms, tax rate etc. and the target is the median house price. The DNN learns non-linear relationships between these features and the price which a simple linear regression cannot capture.
+
+
+Algorithm:
+1. Import required libraries (TensorFlow, NumPy, Pandas, Sklearn)
+
+2. Load Boston Housing dataset
+   - 506 samples, 13 features, 1 target (price)
+   - Split 80% train, 20% test
+
+3. Exploratory Data Analysis
+   - Check shape, datatypes, null values
+   - View statistical summary (mean, std, min, max)
+
+4. Preprocessing
+   - Apply MinMaxScaler to normalize features to range [0,1]
+   - Convert to float32
+   - Split training set further: 90% train, 10% validation
+
+5. Build DNN Model
+   - Input Layer  : 12 features
+   - Hidden Layer 1: 10 neurons, ReLU activation
+   - Hidden Layer 2: 100 neurons, ReLU activation
+   - Output Layer  : 1 neuron (predicted price)
+
+6. Compile Model
+   - Loss function : Mean Squared Error (MSE)
+   - Optimizer     : RMSprop (learning_rate = 0.01)
+   - Metric        : MSE
+
+7. Train Model
+   - Epochs     : 50
+   - Batch size : 32
+   - Monitor training and validation loss each epoch
+
+8. Evaluate Model
+   - Evaluate on test set
+   - Calculate MSE
+
+9. Make Predictions
+   - Predict house prices on test data
+   - Compare predicted vs actual values
+
+10. Plot Loss Curves
+    - Visualize training vs validation loss over epochs
+
+
+
+
+Flowchart:
+
+START
+  |
+  v
+Load Boston Housing Dataset
+(506 samples, 13 features, 1 target)
+  |
+  v
+Exploratory Data Analysis
+(shape, dtypes, describe, null check)
+  |
+  v
+Preprocessing
+(MinMaxScaler → normalize to [0,1], cast float32)
+  |
+  v
+Train / Val / Test Split
+(Train=363, Val=41, Test=102)
+  |
+  v
+Build DNN Model
+(Input → Dense(10,relu) → Dense(100,relu) → Output(1))
+  |
+  v
+Compile Model
+(loss=MSE, optimizer=RMSprop, lr=0.01)
+  |
+  v
+Train Model
+(epochs=50, batch_size=32, validation_data=val)
+  |
+  v
+Evaluate on Test Set
+(MSE=15.52, plot loss curves)
+  |
+  v
+Predict House Prices
+(y_pred[0] = 19.09k)
+  |
+  v
+END
